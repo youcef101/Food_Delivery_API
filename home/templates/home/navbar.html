@@ -1,0 +1,29 @@
+{% load static %}
+<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/simple-house-01.jpg' %}">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="{% static 'img/simple-house-logo.png' %}" alt="Logo" class="tm-site-logo" /> 
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">Restaurent Maazim</h1>
+								<h6 class="tm-site-description">looks for delicious food,just come and try</h6>	
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
+								<li class="tm-nav-li"><a href="{% url 'home:home' %}" class="tm-nav-link active">Home</a></li>
+								<li class="tm-nav-li"><a href="{% url 'home:about_us' %}" class="tm-nav-link">About</a></li>
+								<li class="tm-nav-li"><a href="{% url 'home:contact' %}" class="tm-nav-link">Contact</a></li>
+								
+                                <li class="tm-nav-li"><a href="{% url 'accounts:login' %}" class="tm-nav-link">Sign In</a></li>
+								<li class="tm-nav-li"><a href="#" class="tm-nav-link"><i class="fal fa-shopping-cart"></i></a></li>
+                                
+								
+							</ul>
+						</nav>	
+					</div>
+				</div>
+			</div>
+		</div>
