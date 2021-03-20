@@ -16,8 +16,22 @@
 								<li class="tm-nav-li"><a href="{% url 'home:home' %}" class="tm-nav-link active">Home</a></li>
 								<li class="tm-nav-li"><a href="{% url 'home:about_us' %}" class="tm-nav-link">About</a></li>
 								<li class="tm-nav-li"><a href="{% url 'home:contact' %}" class="tm-nav-link">Contact</a></li>
-								
+								{% if request.user.is_authenticated %}
+									<li class="tm-nav-li dropdown ">
+									<a class="tm-nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+									 data-bs-toggle="dropdown" aria-expanded="false">
+										hello, {{request.user.username}}
+									</a>
+									<ul class="tm-nav-link dropdown-menu" aria-labelledby="navbarDropdown">
+										<li><a class="tm-nav-link dropdown-item" href="{% url 'accounts:profile' %}">My Account</a></li>
+										<li><a class="tm-nav-link dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+									
+									</ul>
+									</li>
+									{% else %}
+
                                 <li class="tm-nav-li"><a href="{% url 'accounts:login' %}" class="tm-nav-link">Sign In</a></li>
+								    {% endif %}
 								<li class="tm-nav-li"><a href="#" class="tm-nav-link"><i class="fal fa-shopping-cart"></i></a></li>
                                 
 								

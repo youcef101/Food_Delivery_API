@@ -26,7 +26,7 @@ class Food(models.Model):
 class Images(models.Model):
     food=models.ForeignKey(Food,on_delete=models.CASCADE)
     title = models.CharField(max_length=50,blank=True)
-    image = models.ImageField(blank=True, upload_to='images/')
+    image = models.ImageField(blank=True, upload_to='img/')
 
     def __str__(self):
         return self.title

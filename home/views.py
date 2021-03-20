@@ -4,13 +4,16 @@ from .forms import ContactForm
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='accounts:login')
 def index(request):
     
     context={}
     return render(request,'home/index.html',context)
 
+@login_required(login_url='accounts:login')
 def contact(request):
     faq=FAQ.objects.all()
     contact_info=ContactInfo.objects.get(id=1)
@@ -34,7 +37,8 @@ def contact(request):
         form=ContactForm()
     context={'contact_info':contact_info,'faq':faq}
     return render(request,'home/contact.html',context)
-
+    
+@login_required(login_url='accounts:login')
 def about(request):
     setting=Setting.objects.get(id=1)
     context={'setting':setting}
