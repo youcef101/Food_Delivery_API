@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf  import settings
+from django.contrib.auth import views as authViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,15 @@ urlpatterns = [
     path('food/', include('food.urls',namespace='food')),
     path('order/', include('order.urls',namespace='order')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    #************Forgot password***************************
+    # path('reset_password/', authViews.PasswordResetView.as_view(
+    #     template_name="auth/password_reset.html"), name="reset_password"),
+    path('reset_password_sent/', authViews.PasswordResetDoneView.as_view(
+        template_name="auth/password_reset_done.html"), name="password_reset_done"),
+    path('reset/<uidb64>/<token>/', authViews.PasswordResetConfirmView.as_view(
+        template_name="auth/password_reset_confirm.html"), name="password_reset_confirm"),
+    path('reset_password_complete/', authViews.PasswordResetCompleteView.as_view(
+        template_name="auth/password_reset_complete.html"), name="password_reset_complete"),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

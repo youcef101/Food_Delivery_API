@@ -16,7 +16,7 @@
                       <h4>{{profile.user.first_name}} {{profile.user.last_name}}</h4>
                       <p class="text-secondary mb-1">{{profile.bio|safe}}</p>
                      
-                      <button class="btn btn-warning">Change Password</button>
+                      <a href="{% url 'accounts:password_change' %}"><button class="btn btn-warning">Change Password</button></a>
                       <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit Profile</button>
                       {% include 'auth/user_update.html' %}
                     </div>
