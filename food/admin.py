@@ -1,6 +1,6 @@
 from django.contrib import admin
 import admin_thumbnails
-from .models import Food,Images
+from .models import Food,Images,Category
 
 # Register your models here.
 @admin_thumbnails.thumbnail('image')
@@ -19,6 +19,9 @@ class FoodAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('image_tag',)
     inlines = [FoodImageInline]
+class CategoryAdmin(admin.ModelAdmin):
+    list_display=['title']
 
 admin.site.register(Food,FoodAdmin)
 admin.site.register(Images,ImagesAdmin)
+admin.site.register(Category,CategoryAdmin)

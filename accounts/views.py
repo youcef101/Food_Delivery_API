@@ -3,6 +3,7 @@ from .forms import CreateNewUser,ProfileUpdate,UserUpdate
 from django.contrib.auth.models import Group,User
 from .models import Customer
 from django.contrib.auth import login,logout,authenticate
+
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages

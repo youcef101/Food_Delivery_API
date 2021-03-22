@@ -1,7 +1,18 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.safestring import mark_safe
+
+class Category(models.Model):
+    title=models.CharField(max_length=100,null=True)
+
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name='category'
+        verbose_name_plural='categories'
 
 class Food(models.Model):
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
     title=models.CharField(max_length=100,null=True)
     description=RichTextUploadingField()
     Ingredients=RichTextUploadingField()
@@ -12,7 +23,7 @@ class Food(models.Model):
     update_at=models.DateTimeField(auto_now=True)
     
     def __str__(self):
-        return self.tilte
+        return self.title
     
     def image_tag(self):
         if self.image.url is not None:

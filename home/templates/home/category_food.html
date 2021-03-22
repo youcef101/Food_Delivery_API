@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block food %}
+<div class="container">
+	<!-- Top box -->
+		<main>
+			<header class="row tm-welcome-section ">
+				
+			</header>
+            <div class="tm-paging-links">
+				<nav>
+					<ul>
+						{% for item in category %}
+						<li class="tm-paging-item"><a href="{% url 'home:category_food' item.id %}" class="tm-paging-link  ">{{item.title}}</a></li>
+						{% endfor %}
+					</ul>
+				</nav>
+			</div>
+			<!-- Gallery -->
+			<div class="row tm-gallery">
+				<!-- gallery page 1 -->
+				
+				<div id="tm-gallery-page-" class="tm-gallery-page justify-content-center">
+					{% for item in page_object %}
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item ">
+						<figure>
+							<img src="{{item.image.url}}" alt="Image" style="height: 250px;" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">{{item.title}}</h4>
+								<!-- <p class="tm-gallery-description">Nam in suscipit nisi, sit amet consectetur metus. Ut sit amet tellus accumsan</p> -->
+                                <div><button class="btn-warning ">Detail</button><button class="btn-warning "><i class="fal fa-shopping-cart"></i></button></div>
+								<p class="tm-gallery-price">{{item.price}}dt</p>
+							</figcaption>
+						</figure>
+					</article>
+					{% endfor %}
+				</div> <!-- gallery page 1 -->
+				{% if page_object.has_other_pages %}
+                <nav aria-label="Page navigation example ">
+                    <ul class="pagination justify-content-center">
+                        {% if page_object.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{page_object.previous_page_number}}">Previous</a></li>
+                        {% endif %}
+                        {% for item in page_object.paginator.page_range %}
+                        <li class="page-item"><a class="page-link" href="?page={{item}}">{{item}}</a></li>
+                        {% endfor %}
+
+                        {% if page_object.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{page_object.next_page_number}}">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
+			</div>
+            
+            </main></div>
+            {% endblock %}

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Simple House Template</title>
+    <title>Restaurent Maazim</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
 	<link href="{% static 'css/templatemo-style.css' %}" rel="stylesheet" />
     <!-- CSS only -->
@@ -34,6 +34,7 @@ https://templatemo.com/tm-539-simple-house
 <body> 
     {% include 'home/navbar.html' %}
     {% block content %}
+	{% block food %}{% endblock %}
 
     {% endblock %}
     {% include 'home/footer.html' %}
@@ -43,18 +44,18 @@ https://templatemo.com/tm-539-simple-house
     
 	<script src="{% static 'js/parallax.min.js' %}"></script>
 	<script>
-		$(document).ready(function(){
+		//$(document).ready(function(){
 			// Handle click on paging links
-			$('.tm-paging-link').click(function(e){
-				e.preventDefault();
+		// 	$('.tm-paging-link ').click(function(e){
+		// 		e.preventDefault();
 				
-				var page = $(this).text().toLowerCase();
-				$('.tm-gallery-page').addClass('hidden');
-				$('#tm-gallery-page-' + page).removeClass('hidden');
-				$('.tm-paging-link').removeClass('active');
-				$(this).addClass("active");
-			});
-		});
+		// 		var page = $(this).text().toLowerCase();
+		// 		$('.tm-gallery-page').addClass('hidden');
+		// 		$('#tm-gallery-page-' + page).removeClass('hidden');
+		// 		$('.tm-paging-link').removeClass('active');
+		// 		$(this).addClass("active");
+		// 	});
+		// });
         $(document).ready(function(){
 			var acc = document.getElementsByClassName("accordion");
 			var i;
