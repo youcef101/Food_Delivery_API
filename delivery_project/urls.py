@@ -27,6 +27,7 @@ urlpatterns = [
     path('food/', include('food.urls',namespace='food')),
     path('order/', include('order.urls',namespace='order')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    
     #************Forgot password***************************
     # path('reset_password/', authViews.PasswordResetView.as_view(
     #     template_name="auth/password_reset.html"), name="reset_password"),
@@ -36,6 +37,10 @@ urlpatterns = [
         template_name="auth/password_reset_confirm.html"), name="password_reset_confirm"),
     path('reset_password_complete/', authViews.PasswordResetCompleteView.as_view(
         template_name="auth/password_reset_complete.html"), name="password_reset_complete"),
+
+
+    #******************api**********************#
+    path('api-auth/', include('rest_framework.urls'))
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
